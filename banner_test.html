@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+    <script>
+    $(document).ready(function(){
+
+
+        var ran=Math.floor(Math.random()*$('.slide li').length)
+        $('.slide li').eq(ran).addClass('on').css('display','black')
+        numOver()
+
+
+        var inter=setInterval(function(){
+            $('.next').trigger('click')
+        },3000)
+
+        $('.slide ul').hover(function(){
+            clearInterval(inter)
+        },function(){
+            inter=setInterval(function(){
+                $('.next').trigger('click')
+            },3000)
+        })
+
+        function numOver(){
+            var idx=$('.slide li.on').index();
+            $('.controll button').eq(idx).addClass('on').siblings().removeClass('on')
+        }
+
+        $('.next').click(function(){
+            numOver()
+            $('.slide li.on').stop().animate({
+                left:"-100%"
+            }).removeClass('on').next().addClass('on')
+            .css({'display':'block','left':'100%'
+        }).stop().animate({
+                left:0
+            })
+            var aaa=$('.slide li.on').html()
+            if(aaa == undefined){
+                $('.slide li').first().addClass('on')
+                .css({'left':'100%'
+            }).animate({
+                    left:0
+                })
+            }
+        })
+
+        $('.prev').click(function(){
+            numOver()
+            $('.slide li.on').animate({
+                left:"100%"
+            }).removeClass('on').prev().addClass('on')
+            .css({'display':'block','left':'-100%'
+        }).animate({
+                left:0
+            })
+
+            var aaa=$('.slide li.on').html()
+            if(aaa == undefined){
+                $('.slide li').last().addClass('on')
+                .css({'left':'-100%','display':'block'
+            }).animate({
+                left:0
+            })
+            }
+        })
+        })
+
+
+    </script>
+    <style>
+*{margin:0; padding:0}
+ul{list-style: none}
+.slide{background:#000; width:485px; margin: 0 auto;position: relative}
+.slide ul{width: 445px; height: 676px; padding:20px; position: relative; overflow: hidden}
+.slide li:first-child{display: block}
+.slide li{position: absolute; display: none; text-align: center}
+.slide .next{position:absolute; top:50%; left:0px; z-index: 1}
+.slide .prev{position:absolute; top:50%; right:0px; z-index: 1}
+.slide li img{width:445px; margin-left:20px}
+.controll{text-align: center}
+.controll .on{background:#F00}
+
+
+    </style>
+
+</head>
+<body>
+    <div class="slide">
+        <button class="next">다음</button>
+        <button class="prev">이전</button>
+        <ul>
+            <li class="on"><img src="images/001.jpg" alt=""></li>
+            <li><img src="images/002.jpg" alt=""></li>
+            <li><img src="images/down.jpg" alt=""></li>
+            <li><img src="images/up.jpg" alt=""></li>
+            <li><img src="images/over.jpg" alt=""></li>
+        </ul>
+    </div>
+
+    <div class="controll">
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+    </div>
+
+</body>
+</html>

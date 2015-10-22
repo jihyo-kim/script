@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>이병헌 슬라이드</title>
+    <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+    <script>
+    $(document).ready(function(){
+
+    var idx=0;
+    $('#wrap li').eq(idx).fadeIn();
+    $('#btn li').eq(idx).find('a').css('background-position','left bottom');
+
+    var slide=setInterval(function(){
+        $('#wrap li').eq(idx).fadeIn().siblings().fadeOut()
+        $('#btn li').eq(idx).find('a').css('background-position','left bottom').parent().siblings().find('a').css('background-position','left top')
+        idx+=1;
+
+        if(idx==$('#wrap li').length){
+            idx = 0
+        }
+
+    },1500)
+
+
+    $('.wraper').hover(function(){
+        clearInterval(slide)
+        },function(){
+            slide=setInterval(function(){
+                $('#wrap li').eq(idx).fadeIn().siblings().fadeOut()
+                idx+=1;
+
+                if(idx==$('#wrap li').length){
+                    idx = 0
+                }
+            },1500)
+    })
+
+
+    $('#btn li').click(function(){
+        var sbtn=$(this).index();
+        $('#btn li').eq(sbtn).find('a').css('background-position','left bottom').parent().siblings().find('a').css('background-position','left top')
+        $('#wrap li').eq(sbtn).fadeIn().siblings().fadeOut()
+
+        return false
+    })
+    })
+
+    </script>
+
+<style>
+*{margin:0 auto; padding:0}
+ul{list-style: none;  }
+html,body{width:100%; height:100%}
+.wraper{width:100%; height:430px;  text-align: center; overflow:hidden; position:relative;  }
+.wraper #wrap{}
+.wraper #wrap li div{width:100%;  }
+.wraper #wrap li div>img{text-align: center}
+.wraper #wrap li{width:100%; position:absolute; left:0; top:0;display: none}
+
+.img01{background-color: #CFCFCD; }
+.img02{background-color: #B7B9B8; }
+.img03{background-color: #061823; }
+
+#btn{position:absolute; bottom:10px; left:48%; z-index: 999; }
+#btn li{float:left;  text-align: center; display:inline-block }
+#btn a{background-image: url("http://www.leebyunghun.kr/html/images/main/key_visual_num.png");
+    background-repeat: no-repeat;
+    background-position: top;
+    text-decoration: none;
+    text-indent: -99999px;
+    display:inline-block; width:20px; height:20px; margin:0 5px; }
+
+
+    </style>
+
+</head>
+<body>
+    <div class="wraper">
+        <ul id="wrap">
+            <li>
+                <div><img src="http://www.leebyunghun.kr/html/images/main/add_img01.jpg" alt=""></div>
+            </li>
+            <li>
+                <div><img src="http://www.leebyunghun.kr/html/images/main/add_img02.jpg" alt=""></div>
+            </li>
+            <li>
+                <div><img src="http://www.leebyunghun.kr/html/images/main/add_img03.jpg" alt=""></div>
+            </li>
+        </ul>
+        <ul id="btn">
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+        </ul>
+    </div>
+</body>
+</html>

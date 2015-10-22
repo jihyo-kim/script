@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+
+    *{margin:0; padding:0}
+    html,body{height:100%; background-color:#ccc}
+    .wrapper{height:100%; width:1000px; margin:0 auto}
+    .wrapper div{height:100%; border:1px red solid; background-color:#fff}
+    .wing{width:80px; height: 150px; border:1px #000 solid; position:absolute; top:0 }
+
+
+</style>
+
+<script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+    <script>
+
+
+    var pageSetting={
+            init:function(){ //init 값을 내보냄
+                var wrapOffset1 = $('.wrapper').offset().left;
+                var wrapOffset2 = $('.wrapper').width();
+                var wingpot=wrapOffset1+wrapOffset2
+                return wingspot
+            }, //지역변수이므로 메모리할당 여유를 가질수있다
+            wing:function(){
+                 $('.wing').css('left',this.init()+10)
+            },
+
+    }
+
+
+    // $(window).load(function(){
+    //     // 백그라운드 이미지 등 용량이커서 불러들이는 시간이 걸릴경우 load 사용해준다
+    //
+    // })
+    //
+    // jQuery(document).ready(function(){})
+    // // 문서가 실행되자마자 실행해라 = 같은 의미$(function(){}) 즉시실행함수 ()//즉시실행 함수
+    //
+    // (function($){ //익스클로러 8 호환성이 안좋아서 이렇게 만들어줘야 오류가 덜 난다
+    //
+    //
+    //
+    //
+    // })(jQuery)//클로져 함수 함수안에 함수를 리턴하는 형식
+    // sum()()
+    //
+    //
+    // //클로져함수
+    // // function sum(){
+    // //     return function(){
+    // //
+    // //     }
+    // // }
+
+
+    $(function(){
+
+        var spotSection=[]
+
+        $('.wrapper div').each(function(i,e){
+            spotSection.push($(e).offset().top)
+
+        })
+
+        $('.wing li').click(function(){
+
+            var idx=$(this).index()
+
+            $('body,html').animate({
+                scrollTop:spotSection[idx]
+            })
+        })
+
+            //var i = 0;
+            // while(i < $('.wrapper div').size()){
+            //     spotSection.push($(".wrapper div").eq(i).offset().top)
+            //     i++
+            // }
+
+            // for(i=0;i < $('.wrapper div').size();i++){
+            //     //spotSection.push($(".wrapper div:eq("+i+")").offset().top)
+            //     spotSection.push($(".wrapper div").eq(i).offset().top)
+            //     console.log(spotSection)
+            // }
+
+            // spotSection.push($('.wrapper div:eq(0)').offset().top)
+            // spotSection.push($('.wrapper div:eq(1)').offset().top)
+            // spotSection.push($('.wrapper div:eq(2)').offset().top)
+            // spotSection.push($('.wrapper div:eq(3)').offset().top)
+            // spotSection.push($('.wrapper div:eq(4)').offset().top)
+
+
+
+
+        //spotSection.push($('.wrapper div:eq(0)').offset().top)
+        //console.log()
+
+
+
+        $(window).resize(function(){
+            wingbanner()
+        })
+
+        $(window).scroll(function(){
+            var sct=$(this).scrollTop()   //scroll의 Top값
+            $('.wing').stop().animate({   //stop를 써서 속도를 빠르게 해준다
+                top:sct
+            })
+            //$('.wing').css('top',sct) top 값을 하나하나 읽느랴 속도가 느려진다
+            //console.window()
+        })
+
+        $(window).trigger("resize")
+
+
+        function wingbanner(){
+        var wrapOffset1 = $('.wrapper').offset().left;
+        var wrapOffset2 = $('.wrapper').width();
+        var wingpot=wrapOffset1+wrapOffset2
+
+        $('.wing').css('left',wingpot+10)
+
+        }
+
+    })
+
+
+    </script>
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+    </div>
+    <div class="wing">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+    </div>
+
+</body>
+</html>

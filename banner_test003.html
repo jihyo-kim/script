@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+    <script>
+    $(document).ready(function(){
+
+        var idx=0;
+        function movement(start,end,index){
+            $('.slide li').eq(idx)
+            .css({
+                'display':'block',
+                'left':start  //시작지점
+            }).animate({
+                left:end
+            })
+
+            if(idx==$('.slide li').size()){
+            idx=0
+            movement('100%','0',idx)
+            }
+            else if(idx<0){
+            idx=$('.slide li').size()-1
+            movement('-100%','0',idx)
+            }
+
+        }
+        $('.next').click(function(){
+        movement('0','-100%',idx)
+        idx+=1;
+        movement('100%','0',idx)  //다음이미지 위치
+        })
+
+        $('.prev').click(function(){
+        movement('0','100%',idx)
+        idx-=1;
+        movement("-100%",'0',idx)  //다음이미지 위치
+        })
+    })
+
+
+
+    </script>
+    <style>
+*{margin:0; padding:0}
+ul{list-style: none}
+.slide{background:#000; width:485px; margin: 0 auto;position: relative}
+.slide ul{width: 445px; height: 676px; padding:20px; position: relative; overflow: hidden}
+.slide li:first-child{display: block}
+.slide li{position: absolute; display: none; text-align: center}
+.slide .next{position:absolute; top:50%; left:0px; z-index: 1}
+.slide .prev{position:absolute; top:50%; right:0px; z-index: 1}
+.slide li img{width:445px; margin-left:20px}
+.slide li:first-child{display: block}
+.controll{text-align: center}
+.controll .on{background:#F00}
+
+
+    </style>
+
+</head>
+<body>
+    <div class="slide">
+        <button class="next">다음</button>
+        <button class="prev">이전</button>
+        <ul>
+            <li class="on"><img src="images/001.jpg" alt=""></li>
+            <li><img src="images/002.jpg" alt=""></li>
+            <li><img src="images/down.jpg" alt=""></li>
+            <li><img src="images/up.jpg" alt=""></li>
+            <li><img src="images/over.jpg" alt=""></li>
+        </ul>
+    </div>
+
+    <div class="controll">
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+    </div>
+
+</body>
+</html>

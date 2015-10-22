@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+
+    var userName;
+    var userScore;
+    var msg;
+
+    userName=prompt("이름을 입력하세요");
+    userScore=prompt("점수을 입력하세요");
+    printLn()
+
+    function lavCheck(sc){
+        if(sc <= 100 && sc >= 90){
+            msg="참잘했어요"
+            return "수"
+        }else if(sc <= 89 && sc >= 80){
+              msg="잘했어요"
+              return "우"
+         }else if(sc <= 79 && sc >= 70){
+             msg="조금만 노력해요"
+             return "미"
+        }else if(sc <= 69 && sc >= 60){
+            msg="나머지 공부하세요"
+            return "양"
+         }else if(sc <= 59 && sc >= 0){
+            msg="부모님 모시고 와요"
+            return "가"
+         }else{
+            return "잘못 입력하셨습니다"
+              }
+            }
+
+    function printLn(){
+        var text=""
+        text+="이름 : "+userName+ "<br />"
+        text+="점수 : "+userScore+ "<br />"
+        text+="등급 : "+lavCheck(userScore)+"<br />"
+        text+=msg
+
+        document.write(text)
+    }
+
+
+
+
+
+    // var start = confirm("성적등급")
+    // var userName;
+    // var num;
+    // var grade;
+    // var msg;
+    // intro()
+    //
+    // function intro(){
+    //     userName = prompt("이름을 입력하세요");
+    //     num = prompt("점수를 입력하세요");
+    //
+    //     if(num <= 100 && num >= 90){
+    //         grade="수"
+    //         msg="참잘했어요"
+    //      }else if(num <= 89 && num >= 80){
+    //          grade="우"
+    //          msg="잘했어요"
+    //      }else if(num <= 79 && num >= 70){
+    //         grade="미"
+    //         msg="조금만 노력해요"
+    //      }else if(num <= 69 && num >= 60){
+    //          grade="양"
+    //          msg="나머지 공부하세요"
+    //     }else if(num <= 59 && num >= 0){
+    //          grade="가"
+    //          msg="부모님 모시고 와요"
+    //      }else{
+    //         grade="잘못 입력하셨습니다"
+    //      }
+    //  }
+    //  document.write(userName+"학생의 성적은"+num+"점 입니다.등급은"+grade+"입니다" )
+    //  alert(msg)
+
+
+
+
+
+
+    // var start = confirm("게임을 시작하시겠습니까?")
+    // var userName = null;
+    //
+    // // 최초 게임시작 기능
+    // function intro(){
+    //     alert("그래! 시작하자!");
+    //     userName = prompt("이름을입력하세요");
+    //
+    //     var msg = ""
+    //     msg += "방갑네 "+userName+" 수업이힘들지?<br />"
+    //     msg += "그래서 자네를 위해 준비한 게임이있다네<br />"
+    //     msg += "이름하야 말장난 게임이라네"
+    //
+    //     document.write(msg)
+    //     search()
+    // }
+    //
+    // function search(){
+    //     var checked = confirm("자네 지금 배가 고픈가?")
+    //
+    //     menuCheck(checked)
+    // }
+    //
+    //
+    // function menuCheck(chk){
+    //     if(chk){
+    //
+    //     alert('지금 그럼 내가 메뉴를 골라주지');
+    //     var menuList = ["아메리카노","카페라때","캬라멜마키야또","초코쉐이크","빅맥","와퍼","KFC치킨","맥주","막걸리","아이스크림","하겐다즈","스타벅스 자바초코칩프라프치노 자바칩추가 토핑 샷추가 벤티","피냉면 가장매운맛","엽떡"]
+    //     var ranNum = randoms(menuList.length);
+    //     console.log(ranNum)
+    //     alert(userName +"\n "+ menuList[ranNum] + "\n"+ "이것을 드셔야합니다!");
+    //
+    //     }else if(!chk){
+    //         alert('그럼 공부나 계속하시게')
+    //     }
+    // }
+    //
+    // function randoms(x){
+    //     return Math.floor(Math.random()*x)
+    // }
+    //
+    //
+    //
+    // if(start){
+    //     intro()
+    // }else{
+    //     document.write("꺼져 나도 안내켯어.")
+    // }
+    //
+
+
+
+
+
+//     var start=confirm("게임을 시작하시겠습니까?")
+//     var userName=null;
+//
+//     if(start){
+//         alert("그래! 시작");
+//         userName=prompt("이름을 입력하세요");
+//
+//         var msg=""
+//         var msg+="반갑습니다"+userName+"님! 수업힘들지요?<br />"
+//         var msg+="반갑습니다"+userName+"님! 수업힘들지요?<br />"
+//         var msg+="반갑습니다"+userName+"님! 수업힘들지요?<br />"
+//         document.write("그래서 당신을위해 게임을 준비했습니다.<br />준비되었지요?");
+//         console.log(userName)
+//     }
+//     if(start){
+//         intro()
+//     }
+//     else{
+//         document.write("잘가요")
+//     }
+//
+// function menuCheck(chk){}
+//
+//
+//     fuction serch(){
+//         var check=confirm("자네 지금 배가 고픈가")
+//         menuCheck(check)
+//
+//
+//
+//
+//         if(check){
+//             alert("지금 그럼 내가 메뉴를 골라주지")
+//         }else if(!check){
+//             alert("그럼 공부나 계속해")
+//         }
+//     }
+
+
+    // nar n=0
+    // n += 1
+    // n += 1
+    // n += 1
+    // n += 1
+    // n += 1
+    // n += 1     1씩 증가
+
+    // nar n=0
+    // n += "가"
+    // n += "나"
+    // n += "다" 가나다 말을 붙여준다
+
+
+
+    // var aa                 //전역변수
+    //
+    // fuction aa(){
+    //     aa                //전역변수
+    //     var bb            //지역변수, aa bb는 한번쓰고 없어짐
+    // }
+
+
+
+    // var question=[
+    //     "나의 사랑방식타입 알아보기",
+    //     "두사람 이성을 동시에 좋아한 적이 있다.",
+    //     "연상보다는 연하의 남성이 좋다.(남성의 경우 연상의 여성)",
+    //     "좋아하는 사람이 있으면 먼저 고백한다.",
+    //     "부모님과 같은 부부가 이상적이라고 생각한다."
+    // ];
+
+
+
+    // var num=prompt("입력");
+    // if(num <= 100 && num >= 90){
+    //     document.write("수")
+    // }else if(num <= 89 && num >= 80){
+    //     document.write("우")
+    // }else if(num <= 79 && num >= 70){
+    //     document.write("미")
+    // }else if(num <= 69 && num >= 60){
+    //     document.write("양")
+    // }else if(num <= 59 && num >= 0){
+    //     document.write("가")
+    // }else{
+    //     document.write("잘못 입력하셨습니다")
+    // }
+    // console.log(num)
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

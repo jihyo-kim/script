@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+
+    *{margin:0; padding:0}
+    html,body{height:100%; background-color:#ccc}
+    .wrapper{height:100%; width:1000px; margin:0 auto}
+    .wrapper div{height:100%; border:1px red solid; background-color:#fff}
+    .wing{width:80px; height: 150px; border:1px #000 solid; position:absolute; top:0 }
+
+
+</style>
+
+<script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+    <script>
+
+    var pageSetting = {
+        init:function(){
+            //위치계산
+            var wrapOffsetL = $('.wrapper').offset().left;
+            var wrapOffsetW = $('.wrapper').width();
+            var wingspot = wrapOffsetL + wrapOffsetW;
+            return wingspot
+        },
+        wing:function(){
+            //위치반영
+            $('.wing').css('left',this.init()+10)
+        },
+        wingAni:function(sct){
+            $('.wing').stop().animate({
+                top:sct
+            })
+        },
+        eventWing:function(){
+            $(window).on({
+                resize:function(e){
+                    pageSetting.wing()
+                },
+                scroll:function(e){
+                    pageSetting.wingAni($(this).scrollTop())
+                }
+            })
+        }
+
+    }
+
+
+
+
+    $(window).load(function(){
+
+        //
+        // $(window).resize(function(){
+        //     pageSetting.wing()
+        // })
+        //
+        // $(window).scroll(function(){
+        //     pageSetting.wingAni($(this).scrollTop())
+        // })
+        //
+        //
+
+    })
+
+
+    $(document).ready(function(){
+        pageSetting.eventWing()
+        $(window).trigger('resize')
+
+    })
+
+
+
+
+
+
+
+
+
+
+    // var spotSection = []
+    //
+    //     $('.wrapper div').each(function(i,e){
+    //         spotSection.push($(e).offset().top)
+    //     })
+    //
+    //     $('.wing li').click(function(){
+    //         var idx = $(this).index()
+    //
+    //         $('body,html').animate({
+    //             scrollTop:spotSection[idx]
+    //         })
+    //
+    //     })
+    //
+    //
+    //
+    //     $(window).resize(function(){
+    //         wingBanner()
+    //     })
+    //
+    //
+    //     $(window).scroll(function(){
+    //         var sct = $(this).scrollTop()
+    //         //$('.wing').css('top',sct)
+    //         $('.wing').stop().animate({
+    //             top:sct
+    //         })
+    //
+    //
+    //     })
+    //
+    //
+    //     $(window).trigger("resize")
+    //
+    //     function wingBanner(){
+    //         var wrapOffsetL = $('.wrapper').offset().left;
+    //         var wrapOffsetW = $('.wrapper').width()
+    //         var wingspot = wrapOffsetL + wrapOffsetW
+    //
+    //         $('.wing').css('left',wingspot+10)
+    //     }
+
+
+    </script>
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+    </div>
+    <div class="wing">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <script type="text/javascript">
+
+
+    var scoreTable = {
+        mags:"",
+        init:function(){
+            var userName = prompt("이름을 입력하세요");
+            var userScore = prompt("점수를 입력하세요");
+
+            var text = ""
+            text += userName + "님의 점수는<br />"
+            text += userScore + "입니다<br />"
+            text += "등급:"+this.calculator(userScore)+"<br />"
+            text += this.masg
+            document.write(text)
+        },
+        calculator:function(sc){
+            if(100 >= sc && 80 <= sc){
+                this.masg = "참잘했어요! 좋겟네요.."
+                return "수"
+            }else if(79 >= sc && 60 <= sc){
+                this.masg = "남들하는 만큼하셧네요.."
+                return "우"
+            }else if(59 >= sc && 40 <= sc){
+                this.masg = "원래 반타치는게 더힘들어요"
+                return "미"
+            }else if(39 >= sc && 20 <= sc){
+                this.masg = "부모님한테 맞을준비하세요"
+                return "양"
+            }else if(19 >= sc && 0 <= sc){
+                this.masg = "집에 못들어가시겠어요"
+                return "가"
+            }else{
+                return "올바른 값이 아닙니다"
+            }
+        }
+    }
+
+    scoreTable.init()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 전체적으로 객체형식의 문법으로 바뀜
+//     var math = {
+//         aaa:"a",
+//         random:function(){
+//         alert("randome")
+//     },
+//     floor:function(){
+//         math.random()   //alert("floore")
+//     },
+//     arr:["aa","bb","cc"]
+// }
+//     console.log(math.arr[0]) //(math.random())
+
+
+
+    // var obj = {aaa:"a", bbb:"b"}  //변수에 이름지어놓은것처럼 생김
+    // console.log(obj.bbb)          // . 은 (/)슬러시와 같은 개념
+    //
+    // //var arr = ['rrr','aa']
+
+
+
+
+
+    //익명함수
+    // function bb(){
+    //     alert('bbb')
+    // }
+    //
+    // bb()
+    //
+    //
+    //
+    // var aa = function(){
+    //     alert('aaa')
+    // }
+    //
+    // aa()
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

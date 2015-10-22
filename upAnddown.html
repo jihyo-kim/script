@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+    <script>
+    var upAndDown={
+        start:function(){
+            var start=confirm("게임을 시작하겠습니까?")
+
+            if(start){
+            var rannum=Math.floor(Math.random()*100)
+            this.input(rannum)
+            }else{
+            alert('싫음 말어')
+            }
+            },
+            input:function(aaa){
+
+                var count=3
+
+                for(i=0;i<count;i++){
+
+                    var usernum=prompt("숫자를 입력하세요")
+
+                    if(aaa<usernum){
+                        
+                        alert('그것보다 작습니다')
+                    }else if(aaa>usernum){
+                        alert('그것보다 큽니다')
+                    }else if(aaa=usernum){
+                        alert('정답입니다')
+                        break
+                    }else{
+                        alert('다음기회에...')
+                        }
+                }
+            }
+    }
+    $(document).ready(function(){
+        $('.btn').click(function(){
+            upAndDown.start()
+        })
+    })
+
+
+    </script>
+
+</head>
+<body>
+    <button class="btn">시작하기</button>
+</body>
+</html>

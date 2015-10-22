@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+
+    <script>
+    $(document).ready(function(){//도큐먼트 실행
+        var idx=0
+        $('.next').click(function(){
+            $('.slide li').eq(idx).animate({
+                //슬라이드 클레스안에 엘아이에게 idx 번지 해당하는 이에게 애니메이트 주기
+                //$('.slide li').eq(idx).html() 선택한 li의 html을 보여준다
+                left:"-100%"  //왼쪽으로 이동
+            })
+            .next().css({'display':'block', 'left':'100%'})
+            //.next(다음 선택되는 li를 뜻함)다음 이미지에 css 효과 주고 눈에 보이게 오른쪽에 놓기
+
+            .stop().animate({'left':'0'}) //수치 하나하나 읽어서 실행하는것을 방지하기 위해 stop를 씀
+            idx+=1
+
+            if(idx==$('.slide li').size()){
+            idx=0;
+
+            $('.slide li').eq(idx).css('left','100%')
+            .stop().animate({
+                left:0
+            })
+            }
+        }) // next end
+
+        $('.prev').click(function(){
+            $('.slide li').eq(idx).animate({
+                left:"100%"
+            })
+            .prev().css({'display':'block', 'left':'-100%'})
+            .stop().animate({'left':'0'})
+            idx-=1
+
+            if(idx<0){
+                idx=$('.slide li').size()-1;
+                $('.slide li').eq(idx).css({'display':'block','left':'-100%'})
+            .stop().animate({
+                left:0
+            })
+            }
+        }) // prev end
+    }) // document end
+
+
+    </script>
+    <style>
+*{margin:0; padding:0}
+ul{list-style: none}
+.slide{border:1px #f00 solid; background:#000; width:485px; margin: 0 auto}
+.slide ul{width: 445px; height: 676px; border:1px #f00 solid; padding:20px;position: relative; overflow: hidden}
+.slide li:first-child{display: block}
+.slide li{position: absolute; display: none}
+
+    </style>
+
+</head>
+<body>
+    <div class="slide">
+        <button class="next">다음</button>
+        <button class="prev">이전</button>
+        <ul>
+            <li><img src="images/001.jpg" alt=""></li>
+            <li><img src="images/002.jpg" alt=""></li>
+            <li><img src="images/down.jpg" alt=""></li>
+            <li><img src="images/up.jpg" alt=""></li>
+            <li><img src="images/over.jpg" alt=""></li>
+        </ul>
+    </div>
+</body>
+</html>

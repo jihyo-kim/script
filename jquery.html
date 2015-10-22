@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+
+    <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+    <script>
+
+
+    $(document).ready(function(){
+
+        var scoreTable={
+
+            userPeopleArr:[],
+            eatArr:[],
+            priceArr:[],
+
+        addData:function(){
+            var userName=prompt("이름을 입력하세요")
+            var eat=prompt("먹고싶은것을 입력하세요")
+            var price=prompt("가격을 입력하세요")
+
+            addData.userPeopleArr.push(userName);
+            addData.eatArr.push(eat);
+            addData.priceArr.push(price);
+        },
+        randompull:function(){
+            var rantotal=[math.floor(math.random()*(userPeopleArr,eatArr,priceArr).length)];
+            randompull.rantotal()
+        },
+
+        total:function(){
+            var tt=0;
+            for(i in total.priceArr){
+                tt+=Number(total.userPeopleArr[i])
+        }
+        return tt+userPeopleArr
+        }
+    }
+
+
+        $('.entry').click(function(){
+            scoreTable.addData()
+        })
+
+        $('.randombt').click(function(){
+            scoreTable.randompull()
+            scoreTable.total()
+        })
+
+})
+
+</script>
+
+</head>
+
+<body>
+    <span class="avgnum"></span>
+    <input type="button" value="참가" class="entry"/>
+    <input type="button" value="랜덤" class="randombt"/>
+
+
+</body>
+</html>

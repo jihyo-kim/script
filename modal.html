@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+    <style>
+.blind{position:absolute; top:0; left:0; bottom:0; right:0;
+    background-color: #000; display:none}
+.popup_box1{width:250px; height:400px }
+.popdesign{background-color: #fff; display:none; border:1px #F00 solid}
+
+    </style>
+    <script>
+    $('document').ready(function(){
+
+        function popup(select){
+            blind()
+
+            var popW=select.width();
+            var popH=select.height();
+            select.append('<button class="close">닫기</button>');
+
+            select.css({
+                'position':'absolute',
+                'left':'50%',
+                'top':'-100%',
+                'marginLeft':-popW/2,
+                'z-index':1,
+            })
+            select.fadeIn().animate({top:'50%'},500,function () {
+                $(this).animate({top:'20%'},500)
+            })
+        }
+
+        function close(){
+            $('.blind').fadeOut(function(){
+                $(this).remove()
+            })
+            $('.popdesign').fadeOut()
+        }
+
+
+
+
+
+
+        $('.popdesign').on('click','.close',function(){
+            close()
+            $('.close').remove()
+        })
+
+
+
+        function blind(){
+            $('body').append('<div class="blind"></div>');
+            $('.blind').fadeTo(1000,0.8);
+        }
+
+        $('.pop1').click(function(){
+            popup($('.popup_box1'))
+        })
+
+    }) // document end
+
+
+    </script>
+</head>
+<body>
+<button class="pop1">팝업</button>
+<div class="popup_box1 popdesign"></div>
+<div class="popup_box2 popdesign"></div>
+</body>
+</html>

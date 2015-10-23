@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+<script>
+
+    $(function(){
+        var idx = 0;
+        var inter = setInterval(intfn,3000)
+
+        function intfn(){
+            idx +=1;
+            if(idx == $('.controll li').size()){
+                idx = 0
+                fadeBn(idx)
+            }else{
+                fadeBn(idx)
+            }
+
+        }
+
+        function fadeBn(index){
+            $('.view li').eq(index).fadeIn().siblings('li').fadeOut()
+            $('.controll li').eq(index).addClass('on').siblings().removeClass('on')
+        }
+
+
+        $('.banner').mouseenter(function(){
+            clearInterval(inter)
+        }).mouseleave(function(){
+            inter = setInterval(intfn,3000)
+        })
+
+
+        $('.controll li').click(function(){
+            idx = $(this).index()
+            fadeBn(idx)
+        })
+
+
+    })
+
+</script>
+<style>
+
+*{margin: 0;padding: 0;}
+ul{list-style-type: none;}
+.banner{position:relative; height:440px;overflow: hidden}
+.banner ul.view li:first-child{display:block;}
+.banner ul.view li{position:absolute;border:1px #F00 solid; width:100%; text-align:center; display: none;}
+.banner ul.view li:nth-child(1){background-color:#CFCFCD}
+.banner ul.view li:nth-child(2){background-color:#CFCFCD}
+.banner ul.view li:nth-child(3){background-color:#061823}
+.banner ul.controll{border:1px #F00 solid; position: relative; z-index: 1;; text-align:center; top:90%;}
+.banner ul.controll li{display: inline-block; font-size:20px;}
+.banner ul.controll li.on{color:#F00}
+
+</style>
+
+</head>
+<body>
+
+    <div class="banner">
+
+        <ul class="view">
+            <li class="on"><img src="http://www.leebyunghun.kr/html/images/main/add_img01.jpg" alt=""></li>
+            <li><img src="http://www.leebyunghun.kr/html/images/main/add_img02.jpg" alt=""></li>
+            <li><img src="http://www.leebyunghun.kr/html/images/main/add_img03.jpg" alt=""></li>
+        </ul>
+
+        <ul class="controll">
+            <li class="on">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+
+    </div>
+
+
+</body>
+</html>

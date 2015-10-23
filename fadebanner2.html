@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"> 2
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+    <script>
+    var imgUrl = [
+        'http://www.leebyunghun.kr/html/images/main/add_img01.jpg',
+        'http://www.leebyunghun.kr/html/images/main/add_img02.jpg',
+        'http://www.leebyunghun.kr/html/images/main/add_img03.jpg'
+    ]
+
+    var bgcolor = ['#CFCFCD','#CFCFCD','#061823'];
+
+    $(document).ready(function(){
+
+        $('.controll li').click(function(){
+
+            var idx=$(this).index();
+
+            $('.view').append('<img src="'+imgUrl[idx]+'" alt="" />')
+            .children('img').first().fadeOut(function(){
+                $(this).remove()
+            }).next().css('display','none').fadeIn()
+
+        })
+
+    })
+
+    </script>
+    <style>
+    *{margin: 0;padding: 0;}
+    ul{list-style-type: none;}
+    .banner{position:relative; width:100%;}
+    .view{background-color:#CFCFCD;  height:430px}
+    .view img{position:absolute; top:0; left:50%; margin-left:-550px}
+
+    .controll{width:100%; text-align: center; position:absolute;bottom:20px}
+    .controll li{ display: inline-block}
+    .controll li.on{color:red}
+    </style>
+</head>
+<body>
+
+    <div class="banner">
+        <div class="view"><img src="http://www.leebyunghun.kr/html/images/main/add_img01.jpg" alt=""></div>
+
+        <ul class="controll">
+            <li class="on">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+
+    </div>
+
+</body>
+</html>

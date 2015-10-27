@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript">
+
+    $(document).ready(function(){
+    var dayarr=['일','월','화','수','목','금','토']
+
+
+    setInterval(function(){//반복적으로 함수기능을 실행하라
+
+        var time=new Date(); //인스턴스의 개념 완벽하진않다
+
+        var year=time.getYear()+1900;
+        var mon=time.getMonth()+1;
+        var date=time.getDate();
+        var day=time.getDay();
+        var Hours=time.getHours();
+        var min=time.getMinutes();
+        var sec=time.getSeconds();
+        var msec=time.getMi
+
+        var timeInfo="";
+        timeInfo+=year+"년 ";
+        timeInfo+=mon+"월 ";
+        timeInfo+=date+"일 ";
+        timeInfo+=dayarr[day]+"요일 ";
+        timeInfo+=Hours+"시 ";
+        timeInfo+=min+"분 ";
+        timeInfo+=sec+"초 ";
+
+        $('body').html(timeInfo) //지우고 다시 써준다
+
+    },100)
+
+})
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+    <script>
+    $(document).ready(function(){
+
+        var movurl;
+
+
+        $('.movlist li').click(function(){
+
+        movurl = $(this).children('input').val()
+        var path="https://www.youtube.com/embed/"+movurl+"?rel=0&amp;controls=0&amp;showinfo=0"
+        $('iframe').attr('src',path)
+
+        console.log($('div').html())
+
+
+        })
+
+    })
+
+    </script>
+</head>
+<body>
+    <div>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/42Gtm4-Ax2U?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+    </div>
+<ul class="movlist">
+    <li><img src="movimg/images/img_01.png" alt=""><input type="hidden" value="7P6YeuNewD4"></li>
+    <li><img src="movimg/images/img_02.png" alt=""><input type="hidden" value="0NoCWRsS_f0"></li>
+    <li><img src="movimg/images/img_03.png" alt=""><input type="hidden" value="Dtt0Gp78uuE"></li>
+    <li><img src="movimg/images/img_04.png" alt=""><input type="hidden" value="IUd2826Dmjo"></li>
+</ul>
+
+</body>
+</html>

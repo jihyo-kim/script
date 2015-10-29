@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+    <title>Document</title>
+
+    <script>
+
+    var bannerData = {
+        infos:[{
+            bannerName:"첫번째 Banner",
+            url:[
+                "images/winner.png",
+                "images/winner.png",
+                "images/winner.png",
+                "images/winner.png"
+            ],
+            alt:[
+                "이미지1",
+                "이미지2",
+                "이미지3",
+                "이미지4"
+            ],
+            link:[
+                "http://www.naver.com",
+                "http://www.naver.com",
+                "http://www.naver.com",
+                "http://www.naver.com"
+            ]
+        },{
+            bannerName:"두번째 Banner",
+            url:[
+                "images/winner.png",
+                "images/winner.png",
+                "images/winner.png",
+                "images/winner.png"
+            ],
+            alt:[
+                "이미지1",
+                "이미지2",
+                "이미지3",
+                "이미지4"
+            ],
+            link:[
+                "http://www.naver.com",
+                "http://www.naver.com",
+                "http://www.naver.com",
+                "http://www.naver.com"
+            ]
+        },{
+            bannerName:"세번째 Banner",
+            url:[
+                "images/winner.png",
+                "images/winner.png",
+                "images/winner.png",
+                "images/winner.png"
+            ],
+            alt:[
+                "이미지1",
+                "이미지2",
+                "이미지3",
+                "이미지4"
+            ],
+            link:[
+                "http://www.naver.com",
+                "http://www.naver.com",
+                "http://www.naver.com",
+                "http://www.naver.com"
+            ]
+        }]
+    }
+
+
+
+
+
+
+
+
+
+    $(document).ready(function(){
+
+    $.each(bannerData.infos,function(i,e){
+
+        var html = '';
+        html +='<div class="banner">';
+        html +='<button class="next">next</button>';
+        html +='<button class="prev">prev</button>';
+        html +='<ul></ul>';
+        html +='</div>';
+        $('body').append(html);
+
+        $.each(e.url,function(k,el){
+            $('.banner').eq(i).children('ul')
+            .append('<li><img src="'+el+'" /><li>')
+        })
+
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        var idx = []; //초기값
+
+        $('.banner').each(function(i,e){
+            //$(e).attr('date-rol-num',i);
+            idx.push(0)
+        })
+
+        function movement(start,end,index,select){
+            select.find('li').eq(index)
+            .addClass('on')
+            .children('div').css({
+                'display':'block',
+                'left':start
+            }).animate({
+                'left':end
+            }).parent('li').siblings('li').removeClass('on')
+
+            // if(index == $('.banner li').size()){
+            //     idx = 0;
+            //     movement('100%','0',idx)
+            // }else if(index < 0){
+            //     idx = $('.banner li').size()-1;
+            //     movement('-100%','0',idx)
+            // }
+        }
+
+        $('.banner').on('click','.next',function(){
+            var $this = $(this).parents('.banner');
+            var n = $this.index()
+            movement('0','-100%',idx[n],$this);
+            idx[n]++
+            movement('100%','0',idx[n],$this);
+        })
+
+        $('.prev').click(function(){
+            var $banner = $(this).parents('.banner');
+            var n = $banner.index()
+
+            movement('0','100%',idx[n],$banner);
+            idx[n]--
+            movement('-100%','0',idx[n],$this);
+        })
+
+
+        $('.banner li a').click(function(){
+            var tg = $(this).parents('.banner');
+            var n = $(this).parents('.banner').index();
+            var sn = $(this).parent().index();
+            var hisNum = idx[n];
+            idx[n] = sn;
+            var realNum = idx[n];
+            if(hisNum < realNum){
+                movement('0','-100%',hisNum,tg);
+                movement('100%','0',idx[n],tg);
+            }else if(hisNum > realNum){
+                movement('0','100%',hisNum,tg);
+                movement('-100%','0',idx[n],tg);
+            }else{
+                return
+            }
+        })
+    })
+
+    </script>
+
+    <style>
+
+    *{margin:0; padding:0;}
+    ul{list-style: none;}
+
+    .banner{width:700px; margin:0 auto; position:relative}
+    .banner ul{width: 600px;height: 338px; overflow:hidden; position:relative; text-align:center; margin: 0 auto;}
+    .banner ul li {display:inline-block;}
+    .banner ul li a{position:relative; z-index: 1;  font-size:20px; color:#FFF; top:300px}
+    .banner ul li:first-child div{display: block;}
+    .banner ul li div{position:absolute; left:0; top:0; display:none;}
+    .banner ul li.on a{color:#F00;}
+    .banner button{position: absolute; top: 50%;}
+    .banner button.next{right:0}
+    .banner button.prev{left:0}
+
+    </style>
+</head>
+<body>
+
+
+</body>
+</html>

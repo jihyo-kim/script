@@ -7,39 +7,111 @@
     <script type="text/javascript">
 
     $(document).ready(function(){
-    var dayarr=['일','월','화','수','목','금','토']
 
 
-    setInterval(function(){//반복적으로 함수기능을 실행하라
+        setInterval(time,1000)
+
+        function time(){
+
+    // var dayarr=['일','월','화','수','목','금','토']
+
+
+    // setInterval(function(){//반복적으로 함수기능을 실행하라
 
         var time=new Date(); //인스턴스의 개념 완벽하진않다
 
-        var year=time.getYear()+1900;
-        var mon=time.getMonth()+1;
-        var date=time.getDate();
-        var day=time.getDay();
-        var Hours=time.getHours();
-        var min=time.getMinutes();
-        var sec=time.getSeconds();
-        var msec=time.getMi
+        var Hours,min,sec
+
+        Hours=time.getHours();
+        min=time.getMinutes();
+        sec=time.getSeconds();
 
         var timeInfo="";
-        timeInfo+=year+"년 ";
-        timeInfo+=mon+"월 ";
-        timeInfo+=date+"일 ";
-        timeInfo+=dayarr[day]+"요일 ";
-        timeInfo+=Hours+"시 ";
-        timeInfo+=min+"분 ";
-        timeInfo+=sec+"초 ";
 
-        $('body').html(timeInfo) //지우고 다시 써준다
+        timeInfo+=Hours;
+        timeInfo+=min;
+        timeInfo+=sec;
 
-    },100)
+        var timeContainer=[];
+
+        $('.time span').remove()
+
+        for(i=0; i<timeInfo.length; i++){
+            var substr=timeInfo.substring(i,i+1);//substring 글씨를 잘라줌
+            timeContainer.push(substr);
+
+            var spot=Number(timeContainer[i])*100
+            //Numger 문자형태인것을 숫자로 바꿔준다 이미지가 100px단위로 배치되어있어서 100단위로 만들어줌
+
+            $('.time').append('<span></span>')
+            $('.time').children('span').eq(i).animate({
+                'backgroundPositionY':'-'+spot+'px'//'backgroundPositionY는 파이어폭스에서는 안먹힌다
+                //'background-color':'0'+'-'+spot+'px'
+            })
+            //$('.time').append('<span>'+timeContainer[i]+'</span>');
+        }
+
+
+    //     if(Hours=>7,Hours<18){
+    //     $('body').css('background-color','green')
+    // }else{
+    //     $('body').css('background-color','red')
+    // }
+
+        if(0<=sec,sec<=9){
+            $('body').css('background-color','red')
+        }else if(10<=sec,sec<=19){
+        $('body').css('background-color','black')
+    }else if(20<=sec,sec<=29){
+        $('body').css('background-color','yellow')
+    }else if(30<=sec,sec<=39){
+        $('body').css('background-color','green')
+    }else if(40<=sec,sec<=49){
+        $('body').css('background-color','pink')
+    }else if(50<=sec,sec<=59){
+        $('body').css('background-color','blue')
+        }
+
+
+        // var year=time.getYear()+1900;
+        // var mon=time.getMonth()+1;
+        // var date=time.getDate();
+        // var day=time.getDay();
+        // var Hours=time.getHours();
+        // var min=time.getMinutes();
+        // var sec=time.getSeconds();
+        // var msec=time.getMilliseconds();
+
+        // var timeInfo="";
+        // timeInfo+=year+"년 ";
+        // timeInfo+=mon+"월 ";
+        // timeInfo+=date+"일 ";
+        // timeInfo+=dayarr[day]+"요일 ";
+        // timeInfo+=Hours+"시 ";
+        // timeInfo+=min+"분 ";
+        // timeInfo+=sec+"초 ";
+        // timeInfo+=msec+"</br>";
+
+        // $('body').html(timeInfo) //지우고 다시 써준다
+
+    // },100)
+}
+
 
 })
+
     </script>
+    <style>
+    body{background-color: #00F;}
+    .time span {display:inline-block; width:41px; height:57px; overflow: hiddne; background-image: url(http://dept.galleria.co.kr/web/img/main/txt-num.png); font-size:0}
+    </style>
 </head>
+
 <body>
+
+    <div class="time">
+
+    </div>
 
 </body>
 </html>

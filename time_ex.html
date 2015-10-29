@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            var time=new Date();
+
+            var Hours,min,sec;
+            Hours=time.getHours();
+            min=time.getMinutes();
+            sec=time.getSeconds();
+
+            var timeInfo="";
+            timeInfo+=Hours;
+            timeInfo+=min;
+            timeInfo+=sec;
+
+            var timecontainer=[];
+
+            for(i=0;i<timeInfo.length;i++){
+                var timestr=timeInfo.substring(i,i+1);
+                timecontainer.push(timestr);
+                console.log(timecontainer);
+                $('.time').append('<span>'+timecontainer[i]+'</span>')
+
+            }
+
+
+        })
+    </script>
+</head>
+<body>
+    <div class="time"></div>
+
+</body>
+</html>

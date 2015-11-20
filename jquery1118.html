@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+    <script>
+
+    $.aniOK = 0;
+
+    (function($){
+
+    	$.aniPage = function(e){ //달러를 사용할수 없는경우에 $를 쓴다(옛날코딩) 글로벌하게 쓸수있당
+
+            var delta = parseInt(e.originalEvent.detail || e.originalEvent.wheelDelta)
+
+            // parseInt() //숫자를 정수로 만듬, 자바스크립트에 원래있던 언어
+            //
+            // e.originalEvent.detail//파이어폭스
+            // var delta = e.originalEvent.wheelDelta;//크롬
+
+            var winH = $(window).height();
+
+            if(delta>0){
+                //스크롤 업
+
+                $("body, html").animate({
+                   scrollTop:$(window).scrollTop()-winH
+               },function(){
+                       $.aniOK = 0;
+               });
+
+            }else{
+                //스크롤 다운
+
+                $('body,html').animate({
+                    scrollTop:$(window).scrollTop()+winH
+                    //scrollTop:'+='+winH
+                },function(){
+                    $.aniOK = 0;
+                });
+            }
+        };
+    })(jQuery);
+
+    $(function(){
+        // $("section").height($(window).height());
+        // $.aniOk=0;
+        $(window).scrollTop(0);
+    });
+
+
+    $(document).on('mousewheel DOMMouseScroll',function(e){//mousewheel 크롬,DOMouseScroll 파이어폭스 이용, (e) 이벤트의 e임
+    //$(document).on 도큐먼트에 이벤트를 바로 건다
+        e.preventDefault();
+
+        if($.aniOK == 0){
+            $.aniPage(e); //효과, 이벤트 정도 e를 넣어준다
+            $.aniOK = 1;
+        }
+    })
+
+
+
+
+    </script>
+    <style>
+*{margin:0 auto}
+html,body{height: 100%}
+section{height: 100%; border: 1px #f00 solid; font-size:4em}
+
+
+    </style>
+</head>
+<body>
+<section>1</section>
+<section>2</section>
+<section>3</section>
+<section>4</section>
+</body>
+</html>

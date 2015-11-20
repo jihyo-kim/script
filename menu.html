@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="../css/menu.css" />
+    <script>
+    $(function(){
+        $('.menu>ul>li').on('mouseenter',function(){
+            $(this).addClass('on').children('ul').stop().show()
+            .parent().siblings().removeClass('on')
+            .children('ul').hide();
+        });
+    })
+
+    </script>
+    <link rel="stylesheet" href="../css/menu.css">
+</head>
+<body>
+    <nav class="menu">
+        <ul>
+            <li class="on">
+                <a href="javascript:void(0)">menu1</a>
+                <ul>
+                    <li><a href="">sub1</a></li>
+                    <li><a href="">sub2</a></li>
+                    <li><a href="">sub3</a></li>
+                    <li><a href="">sub4</a></li>
+                    <li><a href="">sub5</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0)">menu2</a>
+                <ul>
+                    <li><a href="">sub1</a></li>
+                    <li><a href="">sub2</a></li>
+                    <li><a href="">sub3</a></li>
+                    <li><a href="">sub4</a></li>
+                    <li><a href="">sub5</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0)">menu3</a>
+                <ul>
+                    <li><a href="">sub1</a></li>
+                    <li><a href="">sub2</a></li>
+                    <li><a href="">sub3</a></li>
+                    <li><a href="">sub4</a></li>
+                    <li><a href="">sub5</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0)">menu4</a>
+                <ul>
+                    <li><a href="">sub1</a></li>
+                    <li><a href="">sub2</a></li>
+                    <li><a href="">sub3</a></li>
+                    <li><a href="">sub4</a></li>
+                    <li><a href="">sub5</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0)">menu5</a>
+                <ul>
+                    <li><a href="">sub1</a></li>
+                    <li><a href="">sub2</a></li>
+                    <li><a href="">sub3</a></li>
+                    <li><a href="">sub4</a></li>
+                    <li><a href="">sub5</a></li>
+                </ul>
+            </li>
+        </ul>
+
+    </nav>
+</body>
+</html>
